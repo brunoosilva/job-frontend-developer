@@ -1,0 +1,24 @@
+{
+  "name": "job-frontend-developer",
+  "version": "1.0.0",
+  "description": "Search your favorite band",
+  "main": "index.js",
+  "scripts": {
+    "test": "yarn test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brunoosilva/job-frontend-developer.git"
+  },
+  "keywords": [
+    "search",
+    "favorite",
+    "band"
+  ],
+  "author": "Bruno Oliveira <321.bruno@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brunoosilva/job-frontend-developer/issues"
+  },
+  "homepage": "https://github.com/brunoosilva/job-frontend-developer#readme"
+}
