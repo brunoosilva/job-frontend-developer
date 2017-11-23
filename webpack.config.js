@@ -2,12 +2,16 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     entry: './src/app.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'iBand.js'
+    },
+    devServer: {
+        contentBase: './dist'
     },
     module: {
 		rules: [
@@ -19,7 +23,7 @@ module.exports = {
 			},
 			{
 				test: /\.js$/,
-				exclude: /node_modules/,
+                exclude: /node_modules(?!\/webpack-dev-server)/,
 				loader: 'babel-loader',
 				query: {
 					presets: ['es2015']
@@ -59,6 +63,7 @@ module.exports = {
 		]
     },
 	plugins: [
+        new CleanWebpackPlugin(['dist']),
 		new ExtractTextPlugin("iBand.css"),
 		new HtmlWebpackPlugin({
 			template: './src/index.html',
