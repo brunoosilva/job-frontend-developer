@@ -1,7 +1,20 @@
 <form name="vm.form">
-    <input type="text" ng-model="vm.search" placeholder="Pesquise pelo nome da banda" required />
-    <button type="submit" ng-click="vm.getVideos()" ng-disabled="vm.form.$invalid">Buscar</button>
+    <input type="text" ng-model="vm.search" placeholder="Pesquise pelo nome da banda ou artista" required />
+    <button type="submit" ng-click="vm.getBand()" ng-disabled="vm.form.$invalid">Buscar</button>
 </form>
 
+<h4 ng-if="vm.band.name">Banda: {{vm.band.name}}</h4>
+
+
 <h2>Vídeos</h2>
-=> {{ vm.videos }}
+
+<ul>
+    <li ng-repeat="video in vm.videos track by $index">
+        <a href="https://www.youtube.com/watch?v={{ video.id.videoId }}" target="_blank">
+            <img ng-src="{{ video.snippet.thumbnails.default.url }}" />
+        </a>
+        <h3 ng-bind="video.snippet.title"></h3>
+        <small ng-bind="video.snippet.description"></small>
+        Canal: <a href="https://www.youtube.com/channel/{{video.snippet.channelId}}" tar ng-bind="video.snippet.channelTitle"></a>
+    </li>
+</ul>
