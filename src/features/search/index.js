@@ -1,12 +1,9 @@
-(() => {
-	'use strict';
+import angular from 'angular';
+import uiRouter from 'angular-ui-router';
+import config from './search-config';
+import SearchController from './search-controller';
 
-	angular.module('iBand')
-		.config(($stateProvider) => {
-			$stateProvider.state('search', {
-				url: '/',
-				templateUrl: '/features/search/search-template.html',
-				controller: 'SearchController as vm',
-			});
-		});
-})();
+export default angular.module('iBand.search', [uiRouter])
+    .config(config)
+    .controller('SearchController', SearchController)
+    .name;
