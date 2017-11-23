@@ -5,5 +5,8 @@ import config from './config';
 // Features
 import search from './features/search';
 
+// Style
+import './assets/scss/iband.scss';
+
 angular.module('iBand', [uiRouter, search])
     .config(config);
