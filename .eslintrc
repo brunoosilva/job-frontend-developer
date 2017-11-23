@@ -1,0 +1,43 @@
+{
+    "env": {
+        "es6": true,
+        "node": true
+    },
+    "extends": "airbnb-base",
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 2017
+    },
+    "plugins": [],
+    "rules": {
+        "indent": [
+            "error",
+            4
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ]
+    },
+    "overrides": [
+        {
+            "files": [ "src/**/*.js" ],
+            "excludedFiles": [
+                "test-utils.js",
+                "src/**/*-spec.js",
+                "src/**/*-spec-integration.js" ,
+                "src/**/*-fixtures.js",
+                "src/features/user/user-fixtures.js"
+            ]
+        }
+    ]
+}

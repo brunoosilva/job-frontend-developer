@@ -12,6 +12,20 @@ module.exports = {
     module: {
 		rules: [
 			{
+				enforce: 'pre',
+				test: /\.js$/,
+				exclude: /node_modules/,
+				loader: 'eslint-loader',
+			},
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				loader: 'babel-loader',
+				query: {
+					presets: ['es2015']
+				}
+			},
+			{
 				test: /\.scss$/,
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
@@ -31,16 +45,16 @@ module.exports = {
 				})
 			},
 			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				loader: 'babel-loader',
-				query: {
-					presets: ['es2015']
-				}
-			},
-			{
 				test: /\.html$/,
-				loader: 'html-loader',
+                exclude: path.resolve(__dirname, './src/index.html'),
+                use: [
+                    {
+                        loader: 'ngtemplate-loader?relativeTo=' + (path.resolve(__dirname, './src/'))
+                    },
+                    {
+                        loader: 'html-loader'
+                    }
+                ]
 			}
 		]
     },
