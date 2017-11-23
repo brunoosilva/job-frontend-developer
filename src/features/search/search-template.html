@@ -1,3 +1,7 @@
-<div>Bruno {{vm.teste}}</div>
+<form name="vm.form">
+    <input type="text" ng-model="vm.search" placeholder="Pesquise pelo nome da banda" required />
+    <button type="submit" ng-click="vm.getVideos()" ng-disabled="vm.form.$invalid">Buscar</button>
+</form>
 
-<input type="text" ng-model="vm.teste" />
+<h2>Vídeos</h2>
+=> {{ vm.videos }}
