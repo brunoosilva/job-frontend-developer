@@ -59,7 +59,19 @@ module.exports = {
                         loader: 'html-loader'
                     }
                 ]
-			}
+			},
+            {
+                test: /\.js$/,
+                exclude: [
+                    /node_modules/,
+                    /\.test\.js$/
+                ],
+                use: {
+                    loader: 'istanbul-instrumenter-loader',
+                    options: { esModules: true }
+                },
+                enforce: 'post',
+            }
 		]
     },
 	plugins: [
@@ -70,6 +82,5 @@ module.exports = {
 			inject: 'body'
 		}),
 		new webpack.NoEmitOnErrorsPlugin(),
-		new webpack.optimize.UglifyJsPlugin()
 	]
 };
