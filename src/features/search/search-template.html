@@ -1,10 +1,48 @@
-<form name="vm.form">
-    <input type="text" ng-model="vm.search" placeholder="Pesquise pelo nome da banda ou artista" required />
-    <button type="submit" ng-click="vm.getBand()" ng-disabled="vm.form.$invalid">Buscar</button>
-</form>
+<section class="search-form">
+    <form name="vm.form">
+        <input type="text"
+               ng-model="vm.search"
+               placeholder="Pesquise pelo nome da banda ou artista"
+               required />
+        <button type="submit"
+                ng-click="vm.getBand()"
+                ng-disabled="vm.form.$invalid">Buscar</button>
+    </form>
+</section>
+
+<section class="band-info"
+         ng-style="{'background-image': 'url(' + vm.band.cover + ')'}">
+
+    <div class="band-info-container">
+        <div class="band-box-name">
+            <h1 class="band-name"
+                ng-bind="vm.band.name"></h1>
+            <label class="tag" ng-bind="vm.band.genre"></label>
+        </div>
+
+        <ul class="band-socials">
+            <li ng-repeat="social in vm.band.socials track by $index"
+                class="social-item">
+                <a ng-href="{{ social.url }}"
+                   class="social-link"
+                   target="_blank">
+                    <i class="fa" ng-class="['fa-{{ social.icon }}']"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="videos">
+    <h3>Vídeos</h3>
+
+    <article class="video-item"
+             ng-repeat="video in vm.videos track by $index">
+
+    </article>
+</section>
 
 <h4 ng-if="vm.band.name">Banda: {{vm.band.name}}</h4>
-
 
 <h2>Vídeos</h2>
 

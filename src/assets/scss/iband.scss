@@ -1,7 +1,5 @@
-body {
-    font-family: 'Lato', Helvetica,Arial, sans-serif;
-    font-size: 1.5em;
-    color: #333;
-    line-height: 32px;
-	display: flex;
-}
+@import "variables";
+@import "theme";
+@import "search";
+@import "band";
+@import "videos";
