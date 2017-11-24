@@ -1,7 +1,7 @@
 iBand
 =====
 
-[![Build Status](https://travis-ci.org/brunoosilva/job-frontend-developer.svg)](https://travis-ci.org/brunoosilva/job-frontend-developer) [![Coverage Status](https://coveralls.io/repos/github/brunoosilva/moip-sdk-js/badge.svg?branch=master)](https://coveralls.io/github/brunoosilva/job-frontend-developer?branch=master)
+[![Build Status](https://travis-ci.org/brunoosilva/job-frontend-developer.svg)](https://travis-ci.org/brunoosilva/job-frontend-developer) [![Coverage Status](https://coveralls.io/repos/github/brunoosilva/job-frontend-developer/badge.svg?branch=master)](https://coveralls.io/github/brunoosilva/job-frontend-developer?branch=master)
 
 ## StyleGuide
 [John Papa](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md)
