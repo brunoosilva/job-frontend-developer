@@ -1,16 +1,29 @@
-<section class="search-form">
+<section class="search-form"
+         ng-class="{'start': !vm.showResult}"
+         scroll-class>
     <form name="vm.form">
-        <input type="text"
-               ng-model="vm.search"
-               placeholder="Pesquise pelo nome da banda ou artista"
-               required />
-        <button type="submit"
-                ng-click="vm.getBand()"
-                ng-disabled="vm.form.$invalid">Buscar</button>
+        <div class="search-box">
+            <input type="search"
+                   ng-model="vm.search"
+                   name="search"
+                   id="search"
+                   placeholder="Pesquise pelo nome da banda ou artista"
+                   autocomplete="off"
+                   required />
+            <button type="submit"
+                    id="btn-search"
+                    ng-click="vm.getBand()"
+                    ng-disabled="vm.form.$invalid">
+                <i class="fa"
+                   ng-class="{'fa-search': !vm.loading, 'fa-circle-o-notch fa-spin': vm.loading}"></i>
+            </button>
+        </div>
     </form>
 </section>
 
 <section class="band-info"
+         ng-if="vm.band"
+         ng-class="{'show': vm.showResult, 'hide': !vm.showResult}"
          ng-style="{'background-image': 'url(' + vm.band.cover + ')'}">
 
     <div class="band-info-container">
@@ -33,26 +46,50 @@
     </div>
 </section>
 
-<section class="videos">
-    <h3>Vídeos</h3>
+<youtube ng-if="vm.watch"
+         on-close="vm.watch = null"
+         id="vm.watch.id"></youtube>
 
+<section class="videos"
+         ng-class="{'show': vm.showResult, 'hide': !vm.showResult}">
     <article class="video-item"
              ng-repeat="video in vm.videos track by $index">
+
+        <div class="video-image"
+             ng-style="{'background-image': 'url(' + video.image + ')'}"></div>
+
+        <div class="video-content">
+            <label class="video-channel"
+               ng-bind="video.channel.name"></label>
+
+            <button class="video-play" ng-click="vm.watch = video">
+                <i class="fa fa-play"></i>
+            </button>
+
+            <h2 class="video-title"
+                ng-bind="video.title"></h2>
+
+            <p class="video-description"
+               ng-bind="video.description"></p>
+
+            <div class="video-meta">
+                <span class="video-published">
+                    <i class="fa fa-clock-o"></i>
+                    {{ video.published | date }}
+                </span>
+            </div>
+        </div>
 
     </article>
 </section>
 
-<h4 ng-if="vm.band.name">Banda: {{vm.band.name}}</h4>
+<section class="alert-info"
+     ng-if="vm.showResult && !vm.band && !vm.videos">
+    <h1 class="alert-icon">
+        <i class="fa fa-frown-o"></i>
+    </h1>
 
-<h2>Vídeos</h2>
+    <p class="alert-msg">Nenhuma banda ou artista encontrado</p>
+</section>
 
-<ul>
-    <li ng-repeat="video in vm.videos track by $index">
-        <a href="https://www.youtube.com/watch?v={{ video.id.videoId }}" target="_blank">
-            <img ng-src="{{ video.snippet.thumbnails.default.url }}" />
-        </a>
-        <h3 ng-bind="video.snippet.title"></h3>
-        <small ng-bind="video.snippet.description"></small>
-        Canal: <a href="https://www.youtube.com/channel/{{video.snippet.channelId}}" tar ng-bind="video.snippet.channelTitle"></a>
-    </li>
-</ul>
+

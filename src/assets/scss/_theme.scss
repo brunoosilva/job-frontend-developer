@@ -5,10 +5,13 @@
 }
 
 body {
+    background: #f2f2f2;
     font-family: 'Lato', Helvetica,Arial, sans-serif;
     font-size: 1.5em;
     color: #333;
-    line-height: 32px;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 ul, li{
@@ -31,4 +34,15 @@ a{
     vertical-align: baseline;
     border-radius: .25em;
     background-color: #5cb85c;
+}
+
+.alert-info{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    .alert-icon{
+        font-size: 3em;
+        margin-bottom: 20px;
+    }
 }

@@ -1,6 +1,7 @@
 export default class SearchService {
-    constructor($http) {
+    constructor($http, $q) {
         this.$http = $http;
+        this.$q = $q;
 
         this.ticketMasterApi = 'https://app.ticketmaster.com/discovery/v2/attractions.json';
         this.ticketMasterKey = 'q2GNlCrgGo6c8uej3Ib4MsbAC2KIr5nG';
@@ -22,7 +23,7 @@ export default class SearchService {
                 key: this.youtubeKey,
                 q,
                 type: 'video',
-                maxResults: '10',
+                maxResults: '50',
             },
         }).then(res => res.data);
     }
@@ -35,6 +36,12 @@ export default class SearchService {
             },
         }).then(res => res.data);
     }
+    getBand(keyword) {
+        return this.$q.all([
+            this.getVideos(keyword),
+            this.getAttractions(keyword),
+        ]);
+    }
 }
 
-SearchService.$inject = ['$http'];
+SearchService.$inject = ['$http', '$q'];

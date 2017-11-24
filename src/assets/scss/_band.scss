@@ -1,4 +1,5 @@
 .band-info{
+    position: relative;
     width: 100%;
     height: 400px;
     background-repeat: no-repeat;
@@ -6,7 +7,6 @@
     background-position: center;
     background-attachment: fixed;
     box-shadow: inset 0px -138px 100px rgba(0,0,0,0.5);
-    position: relative;
     .band-info-container {
         min-height: 100px;
         padding: 1em;
@@ -19,7 +19,7 @@
         align-items: center;
         .band-box-name{
             .band-name{
-                color: #fff;
+                color: $white;
             }
             .band-genre{
                 margin: .5rem;
@@ -30,7 +30,7 @@
             .social-item{
                 padding: 1rem;
                 .social-link{
-                    color: #fff;
+                    color: $white;
                     &:hover{
                         color: $primary;
                     }
