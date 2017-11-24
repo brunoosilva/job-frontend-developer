@@ -8,7 +8,13 @@ iBand
 
 ## Dependencies
 
-- [NodeJs and NPM ()](https://nodejs.org/en/download/)
+- [NodeJs and NPM ()](https://nodejs.org/en/download/)    
+- Jasmine and Karma for test unit
+- ESLINT with StyleGuide of Airbnb
+- Webpack
+- Integration with Travis and Coveralls
+- Babel (ES6)
+- SASS
 - Yarn (Optional): Install Yarn use the command: 
     - ```npm i -g yarn```
     
