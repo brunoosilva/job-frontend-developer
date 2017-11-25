@@ -19,12 +19,12 @@ export default class SearchController {
             const [videos, attractions] = res;
 
             if (videos && videos.items.length) {
-                this.videos = SearchController.convertVideosInfo(videos.items);
+                this.videos = this.convertVideosInfo(videos.items);
             }
 
             if (attractions && attractions._embedded) {
                 const [band] = attractions._embedded.attractions;
-                this.band = SearchController.convertBandInfo(band);
+                this.band = this.convertBandInfo(band);
             }
 
             this.$timeout(() => {
@@ -34,12 +34,12 @@ export default class SearchController {
         });
     }
 
-    static convertBandInfo(attraction) {
+    convertBandInfo(attraction) {
         const {
             name, images, externalLinks, classifications,
         } = attraction;
 
-        const cover = images.find(image => image.width === 2048 || image.width === 1024);
+        const cover = images.find(image => image.width === 2048 || image.width === 1024).url;
         const genre = classifications.find(classification => classification.primary).genre.name;
         const socialsAccepted = ['facebook', 'twitter', 'youtube', 'instagram', 'lastfm'];
         const socials = !externalLinks ? [] : Object.keys(externalLinks)
@@ -48,13 +48,13 @@ export default class SearchController {
 
         return {
             name,
-            cover: cover.url,
+            cover,
             genre,
             socials,
         };
     }
 
-    static convertVideosInfo(videos) {
+    convertVideosInfo(videos) {
         return videos.map(video => ({
             id: video.id.videoId,
             image: video.snippet.thumbnails.high.url,
