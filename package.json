@@ -59,6 +59,7 @@
     "ngtemplate-loader": "^2.0.1",
     "node-sass": "^4.7.2",
     "phantomjs": "^2.1.7",
+    "phantomjs-prebuilt": "^2.1.16",
     "postcss-loader": "^2.0.8",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
