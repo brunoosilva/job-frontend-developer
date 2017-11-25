@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --hot --open",
     "test:unit": "karma start",
+    "test:e2e": "",
     "test": "npm run test:unit && npm run test:e2e",
     "build": "webpack",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
