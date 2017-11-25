@@ -32,7 +32,8 @@
             {
                 "allow": ["_embedded"]
             }
-        ]
+        ],
+        "class-methods-use-this": [0]
     },
     "overrides": [
         {
